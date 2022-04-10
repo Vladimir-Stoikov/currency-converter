@@ -51,7 +51,7 @@ li {
 export default function DropMenu({current, changeCurrent}) {
 
   const [active, setActive] = useState(false);
-  const [currencyArray, setCurrencyArray] = useState(['RUB','USD','EUR','BTC']);
+  const currencyArray = ['RUB','USD','EUR','BTC'];
 
   function menuAction() { 
   setActive(prev => !prev);
