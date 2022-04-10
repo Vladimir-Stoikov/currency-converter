@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios';
 
 
 import Button from './Button'
@@ -7,15 +8,22 @@ import store from '../store/store';
 
 
 export default function Convert() {
-
   const [startCurrency, setStartCurrency] = useState('RUB');
   const [endCurrency, setEndCurrency] = useState('USD');
   const [output, setOutput] = useState(0);
 
   function convertCurrency() {
     console.log('Convertered');
-    store.convertState(startCurrency, endCurrency);
-    setOutput(store.convertedState);
+     axios.get('https://api.exchangerate.host/latest/')
+    .then((response) => {
+       store.convertState(response.data.rates[startCurrency]);
+       setOutput(store.convertedState);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+    
+
   }
 
   return <>
