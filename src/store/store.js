@@ -10,8 +10,8 @@ class Store {
   changeState(newState) {
     this.state = newState;
   }
-  convertState(ratio) {
-    this.convertedState = Math.floor((this.state / ratio) * 100) / 100;
+  convertState(startRatio, endRatio) {
+    this.convertedState = Math.floor((this.state / startRatio) * endRatio * 1000) / 1000;
   }
 }
 
