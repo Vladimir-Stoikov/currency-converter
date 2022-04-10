@@ -1,6 +1,9 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
 
+import store from '../store/store'
+
+
 const InputField = styled.input`
 width: 75%;
 height: 100%;
@@ -25,15 +28,16 @@ text-align: center;
 }
 `
 
-export default function Input({input}) {
+export default function Input({input, output}) {
 
-  const [inputField, setInputField] = useState('')
+  const [inputField, setInputField] = useState(0);
 
   function changeValue(e) {
     if(e.target.value.length < 15 && input) {
       setInputField(e.target.value);
+      store.changeState(e.target.value);
     }  
   }
 
-  return <InputField type='number' caret={input} value={inputField} onChange={changeValue}></InputField>
+  return <InputField type='number' caret={input} value={output ? output : inputField} onChange={changeValue}></InputField>
 }

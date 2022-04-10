@@ -1,7 +1,8 @@
 import React from 'react';
+import { observer } from 'mobx-react-lite';
 import styled from 'styled-components';
-import Convert from './components/Convert';
 
+import Convert from './components/Convert';
 import Title from './components/Title';
 
 const MainSection = styled.main`
@@ -15,11 +16,13 @@ const MainSection = styled.main`
   backdrop-filter: blur(11px);
 `;
 
-export default function App() {
+const App = observer(() => {
   return (
     <MainSection>
       <Title text='Currency Converter' />
       <Convert />
     </MainSection>
   );
-}
+});
+
+export default App;

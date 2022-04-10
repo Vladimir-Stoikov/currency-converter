@@ -13,10 +13,10 @@ margin: ${({margin}) => margin ? margin : '0 0 15px 0'};
 display: flex;
 `
 
-export default function Container({margin, initialState, input}) {
+export default function Container({margin, current, changeCurrent, input, output}) {
 
   return <CurrencySection margin={margin}>
-    <Input input={input}/>
-    <DropMenu initialState={initialState}/>
+    <Input input={input} output={output}/>
+    <DropMenu current={current} changeCurrent={changeCurrent}/>
   </CurrencySection>
 }

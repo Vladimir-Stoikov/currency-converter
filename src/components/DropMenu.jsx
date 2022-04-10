@@ -48,28 +48,24 @@ li {
 }
 `
 
-export default function DropMenu({initialState}) {
-
-  console.log(this);
+export default function DropMenu({current, changeCurrent}) {
 
   const [active, setActive] = useState(false);
-  const [currencyArray, setCurrencyArray] = useState(['RUB','USD','EUR','BTC'])
-  const [currentCurrency, setCurrentCurrency] = useState(initialState)
+  const [currencyArray, setCurrencyArray] = useState(['RUB','USD','EUR','BTC']);
 
   function menuAction() { 
   setActive(prev => !prev);
   }
   function chooseCurrency(e) { 
-  setCurrentCurrency(e.target.textContent);
+  changeCurrent(e.target.textContent);
   menuAction();
   }
 
-
   return (
     <Menu>
-      <button onClick={menuAction}>{currentCurrency}</button>
+      <button onClick={menuAction}>{current}</button>
       <MenuSection className={active ? 'active' : 'deactive'}>
-       {currencyArray.map((el, id) => el !== currentCurrency ? (<li key={id} onClick={chooseCurrency}>{el}</li>) : null)}
+       {currencyArray.map((el, id) => el !== current ? (<li key={id} onClick={chooseCurrency}>{el}</li>) : null)}
       </MenuSection>
     </Menu>
   )
