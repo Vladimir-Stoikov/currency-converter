@@ -6,6 +6,7 @@ import Convert from './components/Convert';
 import Title from './components/Title';
 
 const MainSection = styled.main`
+  position: relative;
   margin: 220px auto 0;
   padding: 15px 15px 80px;
   width: 400px;
@@ -14,6 +15,10 @@ const MainSection = styled.main`
   border-radius: 20px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(11px);
+
+  @media (max-width: 400px) {
+    width: 100vw;
+  }
 `;
 
 const App = observer(() => {

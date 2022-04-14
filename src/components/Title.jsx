@@ -12,6 +12,12 @@ const TextHeader = styled.h1`
   letter-spacing: 2px;
   box-shadow: 0 25px 19px -19px rgba(0,0,0,0.9);
   text-shadow: 0 0 12px black;
+  @media (max-width: 370px) {
+    font-size: 1.5rem;
+  }
+  @media (max-width: 290px) {
+    font-size: 1.2rem;
+  }
 `
 
 export default function Title({text, margin}) {
