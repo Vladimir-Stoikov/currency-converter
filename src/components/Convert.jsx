@@ -13,7 +13,6 @@ export default function Convert() {
   const [output, setOutput] = useState(0);
 
   function convertCurrency() {
-    console.log('Convertered');
      axios.get('https://api.exchangerate.host/latest/')
     .then((response) => {
        store.convertState(response.data.rates[startCurrency], response.data.rates[endCurrency]);
@@ -22,8 +21,6 @@ export default function Convert() {
     .catch((error) => {
       console.log(error);
     })
-    
-
   }
 
   return <>

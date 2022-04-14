@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
+import store from '../store/store'
 
 const Menu = styled.nav`
 position: relative;
@@ -29,8 +30,14 @@ ul.deactive {
 const MenuSection = styled.ul`
 position: absolute;
 top: 85%;
+box-shadow: 0 0 15px rgba(0,0,0,0.2);
 z-index: 3;
+overflow-y: auto;
+overflow-x: hidden;
+height: 170px;
+width: 106px;
 li {
+ 
   border-top: 2px solid #888;
   color: #333;
   width: 106px;
@@ -39,6 +46,7 @@ li {
   text-align: center;
   background: #efefef;
   padding: 15px;
+  user-select: none;
   &:hover {
   background: #dedede;
   }
@@ -51,10 +59,27 @@ li {
 export default function DropMenu({current, changeCurrent}) {
 
   const [active, setActive] = useState(false);
-  const currencyArray = ['RUB','USD','EUR','BTC'];
+  const currencyArray = ['RUB', 'USD', 'EUR', 'BTC', 'GBP', 'BYN', 'UAH', 'ILS', 'KZT'];
+  
+  useEffect(() => {
+    function closeMenu(e) {
+      if(active === true && e.target.id !== 'currencyButton') {
+        setActive(false)
+        store.switchMenuFlag(false);
+      };
+    }
+    document.addEventListener("click", closeMenu);
+    return () => {
+      document.removeEventListener("click", closeMenu);
+    };
+  }, [active]);
 
   function menuAction() { 
-  setActive(prev => !prev);
+  if(store.menuFlag === true && active === true || store. menuFlag === false && active === false) {
+    store.switchMenuFlag();
+    setActive(prev => !prev);
+    
+  }
   }
   function chooseCurrency(e) { 
   changeCurrent(e.target.textContent);
@@ -63,7 +88,7 @@ export default function DropMenu({current, changeCurrent}) {
 
   return (
     <Menu>
-      <button onClick={menuAction}>{current}</button>
+      <button onClick={menuAction} id='currencyButton'>{current}</button>
       <MenuSection className={active ? 'active' : 'deactive'}>
        {currencyArray.map((el, id) => el !== current ? (<li key={id} onClick={chooseCurrency}>{el}</li>) : null)}
       </MenuSection>
