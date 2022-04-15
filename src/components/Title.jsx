@@ -14,9 +14,13 @@ const TextHeader = styled.h1`
   text-shadow: 0 0 12px black;
   @media (max-width: 370px) {
     font-size: 1.5rem;
+    width: 300px;
+    box-shadow: 0 18px 15px -15px rgba(0,0,0,0.9);
   }
   @media (max-width: 290px) {
     font-size: 1.2rem;
+    width: 250px;
+    box-shadow: 0 15px 12px -12px rgba(0,0,0,0.9);
   }
 `
 

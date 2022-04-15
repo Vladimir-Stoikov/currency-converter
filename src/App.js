@@ -18,6 +18,7 @@ const MainSection = styled.main`
 
   @media (max-width: 400px) {
     width: 100vw;
+    margin-top: 150px;
   }
 `;
 
