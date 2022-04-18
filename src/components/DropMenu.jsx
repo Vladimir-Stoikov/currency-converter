@@ -36,8 +36,8 @@ overflow-y: auto;
 overflow-x: hidden;
 height: 170px;
 width: 106px;
+outline: none;
 li {
- 
   border-top: 2px solid #888;
   color: #333;
   width: 106px;
@@ -54,6 +54,15 @@ li {
   background: #cdcdcd;
   }
 }
+ @media (max-width: 400px) {
+   width: 100%;
+   text-align: center;
+  }
+ @media (max-width: 340px) {
+  li {
+     text-align: start;
+   }
+  }
 `
 
 export default function DropMenu({current, changeCurrent}) {
@@ -75,7 +84,7 @@ export default function DropMenu({current, changeCurrent}) {
   }, [active]);
 
   function menuAction() { 
-  if(store.menuFlag === true && active === true || store. menuFlag === false && active === false) {
+  if((store.menuFlag === true && active === true) || (store.menuFlag === false && active === false)) {
     store.switchMenuFlag();
     setActive(prev => !prev);
     

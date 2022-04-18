@@ -17,6 +17,7 @@ const ConvertButton = styled.button`
   border-bottom-right-radius: 20px;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   box-shadow: 0 -25px 22px -22px rgba(0, 0, 0, 0.9);
+  outline: none;
   &:hover {
     background-color: rgba(256, 256, 256, 0.1);
   }

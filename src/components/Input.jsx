@@ -33,7 +33,7 @@ export default function Input({input, output}) {
   const [inputField, setInputField] = useState(0);
 
   function changeValue(e) {
-    if(e.target.value.length < 15 && input) {
+    if((e.target.value.length < 15) && input) {
       setInputField(e.target.value);
       store.changeState(e.target.value);
     }  

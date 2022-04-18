@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import Convert from './components/Convert';
 import Title from './components/Title';
+import Notice from './components/Notice';
 
 const MainSection = styled.main`
   position: relative;
@@ -15,6 +16,7 @@ const MainSection = styled.main`
   border-radius: 20px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(11px);
+  z-index: 3;
 
   @media (max-width: 400px) {
     width: 100vw;
@@ -24,10 +26,13 @@ const MainSection = styled.main`
 
 const App = observer(() => {
   return (
-    <MainSection>
-      <Title text='Currency Converter' />
-      <Convert />
-    </MainSection>
+    <>
+      <MainSection>
+        <Title text='Currency Converter' />
+        <Convert />
+      </MainSection>
+      <Notice />
+    </>
   );
 });
 
