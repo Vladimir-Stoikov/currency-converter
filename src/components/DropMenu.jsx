@@ -37,6 +37,9 @@ overflow-x: hidden;
 height: 170px;
 width: 106px;
 outline: none;
+button {
+  outline: none;
+}
 li {
   border-top: 2px solid #888;
   color: #333;
